@@ -54,4 +54,20 @@ cardBackImage.src = 'assets/cards/back_light.png'
 document.querySelector('body').append(cardBackImage)
 
 
-export {generateDeckLong, generateDeckShort}
+//export {generateDeckLong, generateDeckShort}
+
+function shuffleDeck(params) {
+
+    for(let i = 0;i< deck.length; i++){
+
+        let a= Math.floor(Math.random()*deck.length) // math floor för att inte få decimaler 
+        let swipeDeck=deck[i];
+        deck[i]=deck[a];
+        deck[a]= swipeDeck;
+       
+
+
+    }
+    console.log(deck); 
+    
+}
