@@ -73,10 +73,10 @@ function shuffleDeck() {
     
 }
 
-// Utdelning av korten//
 // Förbereda leken och dela ut korten
 deck = generateDeck();  // Skapa kortleken
 shuffleDeck();          // Blanda leken
+
 function dealInitialCards() {
     // Tomma händer för ny runda
     playerHand = [];
@@ -94,21 +94,63 @@ function dealInitialCards() {
         console.log(`Player got: ${playerCard.name}`); // Logga spelarens kort för att se till att två kort delas ut
     }
 
-    // Dela ut två kort till dealern
+    // Dela ut två kort till dealern (båda korten visas direkt)
     for (let i = 0; i < 2; i++) {
         let dealerCard = deck.pop(); // Ta det sista kortet från kortleken
         dealerHand.push(dealerCard); // Lägg kortet i dealerns hand
+        dealerCardDisplay.append(dealerCard.image); // Visa kortet på skärmen
+        console.log(`Dealer's card: ${dealerCard.name}`);
+    }
 
-        if (i === 0) {
-            // Visa första kortet öppet
-            dealerCardDisplay.append(dealerCard.image);
-            console.log(`Dealer's visible card: ${dealerCard.name}`);
-        } else {
-            // Skapa ett dolt kort för dealern (det andra kortet)
-            let backOfCard = document.createElement('img');
-            backOfCard.src = 'assets/cards/back.png'; // Bilden för kortets baksida
-            dealerCardDisplay.append(backOfCard);
-            console.log(`Dealer's hidden card: ${dealerHand[1].name}`); // Ändra till dealerHand[1] för att logga det andra kortet
+    // Räkna poäng för både spelaren och dealern efter utdelning
+    let playerScore = calculateScore(playerHand);
+    let dealerScore = calculateScore(dealerHand);
+
+    // Uppdatera poängvisningen i HTML (förutsatt att du har dessa element i din HTML)
+    document.getElementById('player-score').textContent = playerScore;
+    document.getElementById('dealer-score').textContent = dealerScore;
+
+    // Logga poängen i konsolen också (för felsökning)
+    console.log(`Player's score: ${playerScore}`);
+    console.log(`Dealer's score: ${dealerScore}`);
+}
+
+// Funktion för att räkna poäng
+function calculateScore(hand) {
+    let totalScore = 0;
+    let aceCount = 0; // Håller koll på ess
+
+    for (let card of hand) {
+        let rank = card.rank;
+
+        // Kolla om kortet är ett nummerkort (2-10)
+        if (parseInt(rank)) {
+            totalScore += parseInt(rank);
+        }
+        // Klädda kort (Jack, Queen, King) är värda 10
+        else if (rank === 'Jack' || rank === 'Queen' || rank === 'King') {
+            totalScore += 10;
+        }
+        // Ess kan vara 1 eller 11
+        else if (rank === 'Ace') {
+            aceCount += 1;
+            totalScore += 11; // Börja med att räkna ess som 11
         }
     }
+
+    // Om poängen överstiger 21 och det finns ess, räkna dem som 1 istället för 11
+    while (totalScore > 21 && aceCount > 0) {
+        totalScore -= 10; // Ändra ett ess från 11 till 1
+        aceCount -= 1;
+    }
+
+    return totalScore; // Se till att returnera poängen
 }
+
+// När du delar ut kort, räkna poäng direkt efteråt:
+dealInitialCards();
+
+// När du delar ut kort, räkna poäng direkt efteråt:
+dealInitialCards();
+let playerScores = calculateScore(playerHand);
+let dealerScores = calculateScore(dealerHand);

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <script src="scr/script.js" defer></script>
-    <script src="scr\deckGenerator.js" defer></script>
+    <script src="scr/deckGenerator.js" defer></script>
     <title>Black Jack</title>
 </head>
 <body>
@@ -14,10 +14,12 @@
         <section class="game-area game-area--dealer-side">
             <h2 class="game-area__title">Dealer</h2>
             <div class="game-area__card-display dealer-card-display"></div>
+            <div class="dealer-score-display">Score: <span id="dealer-score">0</span></div>
         </section>
         <section class="game-area game-area--player-side">
             <h2 class="game-area__title">You</h2>
             <div class="game-area__card-display player-card-display"></div>
+            <div class="player-score-display">Score: <span id="player-score">0</span></div>
         </section>
         <div class="player-options">
             <button class="player-options__button" id="hit-button">Hit Me</button>
