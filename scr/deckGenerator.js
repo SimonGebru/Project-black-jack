@@ -180,11 +180,13 @@ let dealerScores = calculateScore(dealerHand);
 function dealerTurn() {
     //Börjar med att dra ett kort om score <=17
     if (dealerScores <= 17) {
-        let dealerCard = deck.pop()
-        dealerHand.push(dealerCard)
-        dealerCardDisplay.append(dealerCard.image)
+
+        let dealerCard = deck.pop() //Tar kort från leken
+        dealerHand.push(dealerCard) //Lägger till ovannämnda kort i dealerHand
+        dealerCardDisplay.append(dealerCard.image) //Lägger upp kortet
         console.log(`Dealer's card: ${dealerCard.name}`)
 
+        //Uppdaterar och visar dealerns score
         dealerScores = calculateScore(dealerHand)
         dealerScoreDisplay.innerText = `${dealerScores}`
     }
