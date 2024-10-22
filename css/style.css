@@ -1,0 +1,62 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    /* Gör tillsammans med flex: 1; på main att main sträcker sig till botten av sidan*/
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: bisque;
+    height: 5rem;
+
+    /* För att centrera titeln */
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+
+main {
+    flex: 1;
+
+    background-color: antiquewhite;
+
+    display: grid;
+    grid-template-rows: 1fr 1fr 3rem;
+}
+
+.game-area {
+    padding: 1rem;
+
+    display: grid;
+    grid-template: auto 1fr 2rem / 1fr;
+}
+.game-area--dealer-side {
+    background-color: rgb(227, 199, 156);
+}
+.game-area__card-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.player-options {
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-around;
+}
+.player-options__button {
+    padding: 0 1rem;
+
+}
+
+img {
+    height: 10rem;
+}
