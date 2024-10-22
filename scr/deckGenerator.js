@@ -80,7 +80,7 @@ function dealInitialCards() {
         let playerCard = deck.pop(); // Ta det sista kortet från kortleken
         playerHand.push(playerCard); // Lägg kortet i spelarens hand
         playerCardDisplay.append(playerCard.image); // Visa kortet på skärmen
-        console.log(`Player got: ${playerCard.name}`); // Logga spelarens kort för att se till att två kort delas ut
+        console.log(`Player got: ${playerCard.name}`);
     }
 
     // Dela ut två kort till dealern (båda korten visas direkt)
@@ -92,16 +92,37 @@ function dealInitialCards() {
     }
 
     // Räkna poäng för både spelaren och dealern efter utdelning
-    let playerScore = calculateScore(playerHand);
-    let dealerScore = calculateScore(dealerHand);
+    playerScore = calculateScore(playerHand);
+    dealerScore = calculateScore(dealerHand);
 
-    // Uppdatera poängvisningen i HTML (förutsatt att du har dessa element i din HTML)
+    // Uppdatera poängvisningen i HTML
     document.getElementById('player-score').textContent = playerScore;
     document.getElementById('dealer-score').textContent = dealerScore;
 
     // Logga poängen i konsolen också (för felsökning)
     console.log(`Player's score: ${playerScore}`);
     console.log(`Dealer's score: ${dealerScore}`);
+}
+
+// Funktion för att dra ett till kort när "Hit Me"-knappen klickas
+function hitButtonClick() {
+    let newCard = deck.pop(); // Dra ett nytt kort från kortleken
+    playerHand.push(newCard); // Lägg till det i spelarens hand
+    playerCardDisplay.append(newCard.image); // Visa det nya kortet på skärmen
+
+    // Uppdatera spelarens poäng
+    playerScore = calculateScore(playerHand);
+    document.getElementById('player-score').textContent = playerScore;
+
+    // Logga kortet och spelarens nya poäng i konsolen för felsökning
+    console.log(`Player got: ${newCard.name}`);
+    console.log(`Player's updated score: ${playerScore}`);
+
+    // Kolla om spelaren har överstigit 21 (bust)
+    if (playerScore > 21) {
+        console.log('Player busts!');
+        // Lägg till logik här för vad som händer när spelaren "bustar"
+    }
 }
 
 // Funktion för att räkna poäng
@@ -136,6 +157,12 @@ function calculateScore(hand) {
     return totalScore; // Se till att returnera poängen
 }
 
+
+hitButton.addEventListener('click', hitButtonClick);
+standButton.addEventListener('click', standButtonClick);
+
+console.log(playerCardDisplay, dealerCardDisplay, hitButton, standButton);
+
 // När du delar ut kort, räkna poäng direkt efteråt:
 dealInitialCards();
 
@@ -143,6 +170,7 @@ dealInitialCards();
 dealInitialCards();
 let playerScores = calculateScore(playerHand);
 let dealerScores = calculateScore(dealerHand);
+
 
 
 
