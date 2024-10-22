@@ -74,7 +74,9 @@ function shuffleDeck() {
 }
 
 // Utdelning av korten//
-
+// Förbereda leken och dela ut korten
+deck = generateDeck();  // Skapa kortleken
+shuffleDeck();          // Blanda leken
 function dealInitialCards() {
     // Tomma händer för ny runda
     playerHand = [];
@@ -106,7 +108,7 @@ function dealInitialCards() {
             let backOfCard = document.createElement('img');
             backOfCard.src = 'assets/cards/back.png'; // Bilden för kortets baksida
             dealerCardDisplay.append(backOfCard);
-            console.log(`Dealer's hidden card: ${dealerCard.name}`);
+            console.log(`Dealer's hidden card: ${dealerHand[1].name}`); // Ändra till dealerHand[1] för att logga det andra kortet
         }
     }
 }
