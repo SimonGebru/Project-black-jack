@@ -1,19 +1,3 @@
-//Funktionsvariant som bara genererar en lista med namn
-function generateDeckSimplified() {
-    let newDeck = []
-    const suits = ['Spader', 'Hjärter', 'Ruter', 'Klöver']
-    const ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Knekt', 'Dam', 'Kung', 'Ess']
-    for (let suit of suits) {
-        for (let rank of ranks) {
-            let newCard = suit + ' ' + rank
-            newDeck.push(newCard)
-        }
-    }
-
-    return newDeck
-}
-
-
 //Variant som genererar lista med objekt{} med namn, färg, rang och HTML-bildelement
 function generateDeck() {
     let newDeck = []
@@ -31,7 +15,12 @@ function generateDeck() {
                 image: document.createElement('img') //Skapar ett tomt <img> element
             }
 
-            let imageSource = `assets/cards/${suit}_${rank[0]}.png` //I fallet spader 5 blir strängen "assets/cards/spades_5.png"
+            let imageSource
+            if (newCard.rank == 10) {
+                imageSource = `assets/cards/${suit}_${rank}.png`
+            } else {
+                imageSource = `assets/cards/${suit}_${rank[0]}.png`
+            }
             newCard.image.src = imageSource 
 
             newDeck.push(newCard)

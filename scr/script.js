@@ -9,11 +9,13 @@ let dealerScore //Inte så bra namn ifall man både räknar summan av handen och
 
 
 
-// //variabler för att kunna lägga ut kort och interagera med DOMen från js
-let playerCardDisplay = document.querySelector('.player-card-display')
-let dealerCardDisplay = document.querySelector('.dealer-card-display')
-let hitButton = document.querySelector('#hit-button')
-let standButton = document.querySelector('#stand-button')
+// variabler för att kunna lägga ut kort och interagera med DOMen från js
+const playerCardDisplay = document.querySelector('.player-card-display')
+const dealerCardDisplay = document.querySelector('.dealer-card-display')
+const playerScoreDisplay = document.querySelector('#player-score')
+const dealerScoreDisplay = document.querySelector('#dealer-score')
+const hitButton = document.querySelector('#hit-button')
+const standButton = document.querySelector('#stand-button')
 
 console.log(playerCardDisplay, dealerCardDisplay, hitButton, standButton)
 
