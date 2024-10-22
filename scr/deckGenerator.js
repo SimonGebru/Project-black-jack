@@ -72,3 +72,41 @@ function shuffleDeck() {
     console.log(deck); 
     
 }
+
+// Utdelning av korten//
+
+function dealInitialCards() {
+    // Tomma händer för ny runda
+    playerHand = [];
+    dealerHand = [];
+
+    // Rensa tidigare kort från display
+    playerCardDisplay.innerHTML = '';
+    dealerCardDisplay.innerHTML = '';
+
+    // Dela ut två kort till spelaren
+    for (let i = 0; i < 2; i++) {
+        let playerCard = deck.pop(); // Ta det sista kortet från kortleken
+        playerHand.push(playerCard); // Lägg kortet i spelarens hand
+        playerCardDisplay.append(playerCard.image); // Visa kortet på skärmen
+        console.log(`Player got: ${playerCard.name}`); // Logga spelarens kort för att se till att två kort delas ut
+    }
+
+    // Dela ut två kort till dealern
+    for (let i = 0; i < 2; i++) {
+        let dealerCard = deck.pop(); // Ta det sista kortet från kortleken
+        dealerHand.push(dealerCard); // Lägg kortet i dealerns hand
+
+        if (i === 0) {
+            // Visa första kortet öppet
+            dealerCardDisplay.append(dealerCard.image);
+            console.log(`Dealer's visible card: ${dealerCard.name}`);
+        } else {
+            // Skapa ett dolt kort för dealern (det andra kortet)
+            let backOfCard = document.createElement('img');
+            backOfCard.src = 'assets/cards/back.png'; // Bilden för kortets baksida
+            dealerCardDisplay.append(backOfCard);
+            console.log(`Dealer's hidden card: ${dealerCard.name}`);
+        }
+    }
+}
