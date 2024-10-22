@@ -9,7 +9,7 @@ let dealerScore //Inte så bra namn ifall man både räknar summan av handen och
 
 
 
-// //variabler för att kunna lägga ut kort och interagera med DOMen från js
+// variabler för att kunna lägga ut kort och interagera med DOMen från js
 let playerCardDisplay = document.querySelector('.player-card-display')
 let dealerCardDisplay = document.querySelector('.dealer-card-display')
 let hitButton = document.querySelector('#hit-button')
