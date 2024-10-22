@@ -1,5 +1,5 @@
 //Funktionsvariant som bara genererar en lista med namn
-function generateDeckShort() {
+function generateDeckSimplified() {
     let newDeck = []
     const suits = ['Spader', 'Hjärter', 'Ruter', 'Klöver']
     const ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Knekt', 'Dam', 'Kung', 'Ess']
@@ -15,7 +15,7 @@ function generateDeckShort() {
 
 
 //Variant som genererar lista med objekt{} med namn, färg, rang och HTML-bildelement
-function generateDeckLong() {
+function generateDeck() {
     let newDeck = []
 
     //Använder engelska för att kunna använda namnen för att hitta rätt png
@@ -32,7 +32,7 @@ function generateDeckLong() {
             }
 
             let imageSource = `assets/cards/${suit}_${rank[0]}.png` //I fallet spader 5 blir strängen "assets/cards/spades_5.png"
-            newCard.image.src = imageSource //
+            newCard.image.src = imageSource 
 
             newDeck.push(newCard)
         }
@@ -43,14 +43,16 @@ function generateDeckLong() {
 
 
 //Hur man skapar en kortlek och lägger till <img>-elementet hos ett kort i HTML-dokumentets <body>-tagg
-let deck = generateDeckLong()
+let testDeck = generateDeck()
 
-let card = deck[24]
-document.querySelector('body').append(card.image) 
+let card = testDeck[24]
+document.querySelector('.dealer-card-display').append(card.image) 
+document.querySelector('.dealer-card-display').append(testDeck[4].image) 
 
-let cardBackImage = document.createElement('img')
-cardBackImage.src = 'assets/cards/back_light.png'
-document.querySelector('body').append(cardBackImage)
+document.querySelector('.player-card-display').append(testDeck[5].image) 
+
+
+
 
 
 //export {generateDeckLong, generateDeckShort}
