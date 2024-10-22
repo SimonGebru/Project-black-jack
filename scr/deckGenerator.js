@@ -1,22 +1,22 @@
 //Funktionsvariant som bara genererar en lista med namn
 function generateDeckShort() {
-    let deck = []
+    let newDeck = []
     const suits = ['Spader', 'Hjärter', 'Ruter', 'Klöver']
     const ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Knekt', 'Dam', 'Kung', 'Ess']
     for (let suit of suits) {
         for (let rank of ranks) {
             let newCard = suit + ' ' + rank
-            deck.push(newCard)
+            newDeck.push(newCard)
         }
     }
 
-    return deck
+    return newDeck
 }
 
 
 //Variant som genererar lista med objekt{} med namn, färg, rang och HTML-bildelement
 function generateDeckLong() {
-    let deck = []
+    let newDeck = []
 
     //Använder engelska för att kunna använda namnen för att hitta rätt png
     const suits = ['spades', 'hearts', 'diamonds', 'clubs'] 
@@ -34,20 +34,19 @@ function generateDeckLong() {
             let imageSource = `assets/cards/${suit}_${rank[0]}.png` //I fallet spader 5 blir strängen "assets/cards/spades_5.png"
             newCard.image.src = imageSource //
 
-            deck.push(newCard)
+            newDeck.push(newCard)
         }
     }
 
-    return deck
+    return newDeck
 }
 
 
-//Nedanstående bör inte användas utan är mer exempel på hur funktionen kan tillämpas
+//Hur man skapar en kortlek och lägger till <img>-elementet hos ett kort i HTML-dokumentets <body>-tagg
 let deck = generateDeckLong()
 
-let card = deck[24] //väljer ut kort med index 24 som "card"
-
-document.querySelector('body').append(card.image) //lägger till <img>-elementet hos "card" i HTML-dokumentets <body>-tagg
+let card = deck[24]
+document.querySelector('body').append(card.image) 
 
 let cardBackImage = document.createElement('img')
 cardBackImage.src = 'assets/cards/back_light.png'
