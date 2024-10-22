@@ -125,6 +125,36 @@ function hitButtonClick() {
     }
 }
 
+// function pour avoir le standButtonClick()
+// le total des sum
+// desactiver les buttons 
+
+function standButtonClick() {
+    let bekräfta= confirm(" Vill du verkligen stanna med detta? ");
+    if (bekräfta) {
+        document.getElementById('hit-button').disabled = true;
+        document.getElementById('stand-button').disabled = true;
+        dealerTurn(); // Appler la fonctions dealer turn de Simon
+    console.log(" ....Works "); 
+        
+    }else{
+
+        console.log("Allez ...Spelaren vill fortsätta spela");
+     
+      
+
+    }
+
+ // J'ai besoin d'un resetgame -> button is disbled 
+
+
+}
+
+
+
+
+
+
 // Funktion för att räkna poäng
 function calculateScore(hand) {
     let totalScore = 0;
@@ -196,4 +226,44 @@ function dealerTurn() {
         console.log('Pausing for dramatic effect...')
         setTimeout(dealerTurn, 1000) //Betyder praktiskt taget "börja om funktionen efter 1000 millisekunder"
     }
+
+   
 }
+
+
+
+ // avoir qui a ganger 
+ let winner =()=>{
+    let dealerScore=calculateScore(dealerHand);
+    let playerScore=calculateScore(playerHand);
+     const result= "";
+     if (dealerScore > 21 || playerScore > dealerScore) {
+        result= 'Player wins!';
+    } else if (playerScore < dealerScore) {
+        result = 'Dealer wins!';
+    } else {
+        result = ' tie!';
+    }
+
+    alert(result);
+     console.log(result);
+     restartGame();
+    }
+    
+    // denna funktionen ska bli kallad från Winner 
+function restartGame(){
+    // återaktivera buttons 
+    // åter kalla alla funktioner mfrån objektet 
+    console.log(" ....Game begins");
+    
+document.getElementById('hit-button').disabled = false;
+document.getElementById('stand-button').disabled = false;
+deck=generateDeck();
+   shuffleDeck();
+   dealInitialCards();
+
+  
+ 
+}
+
+
