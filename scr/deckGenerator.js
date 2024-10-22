@@ -143,3 +143,27 @@ dealInitialCards();
 dealInitialCards();
 let playerScores = calculateScore(playerHand);
 let dealerScores = calculateScore(dealerHand);
+
+
+
+
+
+
+function dealerTurn() {
+    //Börjar med att dra ett kort om score <=17
+    if (dealerScores <= 17) {
+        let dealerCard = deck.pop()
+        dealerHand.push(dealerCard)
+        dealerCardDisplay.append(dealerCard.image)
+        console.log(`Dealer's card: ${dealerCard.name}`)
+
+        dealerScores = calculateScore(dealerHand)
+        dealerScoreDisplay.innerText = `${dealerScores}`
+    }
+
+    //Nödvändigt att göra såhär istället för att använda while-loop om det ska bli delay mellan att korten läggs ut,
+    if (dealerScores <=17) {
+        console.log('Pausing for dramatic effect...')
+        setTimeout(dealerTurn, 1000) //Betyder praktiskt taget "börja om funktionen efter 1000 millisekunder"
+    }
+}
