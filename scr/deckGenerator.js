@@ -130,12 +130,13 @@ function hitButtonClick() {
 // desactiver les buttons 
 
 function standButtonClick() {
+
     let bekräfta= confirm(" Vill du verkligen stanna med detta? ");
     if (bekräfta) {
-        document.getElementById('hit-button').disabled = true;
+        document.getElementById('hit-button').disabled = true;// disable ces buttons 
         document.getElementById('stand-button').disabled = true;
         dealerTurn(); // Appler la fonctions dealer turn de Simon
-    console.log(" ....Works "); 
+    console.log(" ....Works....... "); 
         
     }else{
 
@@ -202,11 +203,6 @@ let playerScores = calculateScore(playerHand);
 let dealerScores = calculateScore(dealerHand);
 
 
-
-
-
-
-
 function dealerTurn() {
     //Börjar med att dra ett kort om score <=17
     if (dealerScores <= 17) {
@@ -242,7 +238,7 @@ function dealerTurn() {
     } else if (playerScore < dealerScore) {
         result = 'Dealer wins!';
     } else {
-        result = ' tie!';
+        result = 'a tie!';
     }
 
     alert(result);
@@ -254,7 +250,7 @@ function dealerTurn() {
 function restartGame(){
     // återaktivera buttons 
     // åter kalla alla funktioner mfrån objektet 
-    console.log(" ....Game begins");
+    console.log(" ....Game begins......");
     
 document.getElementById('hit-button').disabled = false;
 document.getElementById('stand-button').disabled = false;
@@ -262,8 +258,6 @@ deck=generateDeck();
    shuffleDeck();
    dealInitialCards();
 
-  
- 
 }
 
 
