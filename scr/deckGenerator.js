@@ -56,7 +56,7 @@ document.querySelector('body').append(cardBackImage)
 
 //export {generateDeckLong, generateDeckShort}
 
-function shuffleDeck(params) {
+function shuffleDeck() {
 
     for(let i = 0;i< deck.length; i++){
 
