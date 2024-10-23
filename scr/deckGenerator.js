@@ -199,13 +199,13 @@ dealInitialCards();
 
 // När du delar ut kort, räkna poäng direkt efteråt:
 dealInitialCards();
-let playerScores = calculateScore(playerHand);
-let dealerScores = calculateScore(dealerHand);
+playerScore = calculateScore(playerHand);
+dealerScore = calculateScore(dealerHand);
 
 
 function dealerTurn() {
     //Börjar med att dra ett kort om score <=17
-    if (dealerScores <= 17) {
+    if (dealerScore <= 17) {
 
         let dealerCard = deck.pop() //Tar kort från leken
         dealerHand.push(dealerCard) //Lägger till ovannämnda kort i dealerHand
@@ -213,12 +213,12 @@ function dealerTurn() {
         console.log(`Dealer's card: ${dealerCard.name}`)
 
         //Uppdaterar och visar dealerns score
-        dealerScores = calculateScore(dealerHand)
-        dealerScoreDisplay.innerText = `${dealerScores}`
+        dealerScore = calculateScore(dealerHand)
+        dealerScoreDisplay.innerText = `${dealerScore}`
     }
 
     //Nödvändigt att göra såhär istället för att använda while-loop om det ska bli delay mellan att korten läggs ut,
-    if (dealerScores <=17) {
+    if (dealerScore <=17) {
         console.log('Pausing for dramatic effect...')
         setTimeout(dealerTurn, 1000) //Betyder praktiskt taget "börja om funktionen efter 1000 millisekunder"
     }
